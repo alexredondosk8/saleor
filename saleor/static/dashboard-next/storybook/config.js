@@ -61,6 +61,9 @@ function loadStories() {
   require("./stories/products/ProductVariantStock");
   require("./stories/products/ProductVariants");
 
+  // Sales
+  require("./stories/sales/SaleListPage");
+
   // Orders
   require("./stories/orders/OrderAddressEditDialog");
   require("./stories/orders/OrderCancelDialog");
