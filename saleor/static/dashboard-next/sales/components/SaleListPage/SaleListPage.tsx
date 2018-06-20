@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { DiscountValueType } from "../..";
 import Container from "../../../components/Container";
 import PageHeader from "../../../components/PageHeader";
 import i18n from "../../../i18n";
@@ -14,7 +15,7 @@ interface SaleListPageProps {
   sales?: Array<{
     id: string;
     name: string;
-    type: string;
+    type: DiscountValueType;
     value: number;
     products: {
       totalCount: number;

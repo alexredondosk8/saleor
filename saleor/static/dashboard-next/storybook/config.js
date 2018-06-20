@@ -63,6 +63,7 @@ function loadStories() {
 
   // Sales
   require("./stories/sales/SaleListPage");
+  require("./stories/sales/SaleDetailsPage");
 
   // Orders
   require("./stories/orders/OrderAddressEditDialog");

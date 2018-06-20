@@ -23,13 +23,20 @@ const decorate = withStyles(theme => ({
     },
     backgroundColor: theme.palette.error.main,
     color: theme.palette.error.contrastText
+  },
+  dialog: {
+    overflowY: "visible" as "visible"
+  },
+  root: {
+    overflowY: "visible" as "visible",
+    width: theme.breakpoints.values.sm
   }
 }));
 const ActionDialog = decorate<ActionDialogProps>(
   ({ children, classes, open, title, variant, onConfirm, onClose }) => (
-    <Dialog open={open}>
+    <Dialog open={open} classes={{ paper: classes.dialog }}>
       <DialogTitle>{title}</DialogTitle>
-      <DialogContent>{children}</DialogContent>
+      <DialogContent className={classes.root}>{children}</DialogContent>
       <DialogActions>
         <Button onClick={onClose}>
           {i18n.t("Cancel", { context: "button" })}
