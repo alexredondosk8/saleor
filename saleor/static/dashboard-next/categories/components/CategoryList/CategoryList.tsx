@@ -9,7 +9,9 @@ import TableRow from "@material-ui/core/TableRow";
 import * as React from "react";
 
 import CardTitle from "../../../components/CardTitle";
+import ClickableTableRow from "../../../components/ClickableTableRow";
 import Skeleton from "../../../components/Skeleton";
+import SkeletonTableRow from "../../../components/SkeletonTableRow";
 import i18n from "../../../i18n";
 import { renderCollection } from "../../../misc";
 
@@ -32,9 +34,6 @@ interface CategoryListProps {
 const decorate = withStyles({
   centerText: {
     textAlign: "center" as "center"
-  },
-  tableRow: {
-    cursor: "pointer" as "pointer"
   },
   wideColumn: {
     width: "100%"
@@ -74,34 +73,26 @@ const CategoryList = decorate<CategoryListProps>(
           {renderCollection(
             categories,
             category => (
-              <TableRow
-                className={classes.tableRow}
-                hover={!!category}
-                onClick={category ? onRowClick(category.id) : undefined}
-                key={category ? category.id : "skeleton"}
+              <ClickableTableRow
+                onClick={onRowClick(category.id)}
+                key={category.id}
               >
                 <TableCell>
-                  {category && category.name ? category.name : <Skeleton />}
+                  {category.name || <Skeleton />}
                 </TableCell>
                 <TableCell>
-                  {category &&
-                  category.children &&
-                  category.children.totalCount !== undefined ? (
-                    category.children.totalCount
-                  ) : (
-                    <Skeleton />
-                  )}
+                  {
+                    category.children && category.children.totalCount !== undefined ?
+                      category.children.totalCount : <Skeleton />
+                  }
                 </TableCell>
                 <TableCell className={classes.centerText}>
-                  {category &&
-                  category.products &&
-                  category.products.totalCount !== undefined ? (
-                    category.products.totalCount
-                  ) : (
-                    <Skeleton />
-                  )}
+                  {
+                    category.products && category.products.totalCount !== undefined ?
+                      category.products.totalCount : <Skeleton />
+                  }
                 </TableCell>
-              </TableRow>
+              </ClickableTableRow>
             ),
             () => (
               <TableRow>
@@ -111,7 +102,8 @@ const CategoryList = decorate<CategoryListProps>(
                     : i18n.t("No subcategories found")}
                 </TableCell>
               </TableRow>
-            )
+            ),
+            () => <SkeletonTableRow columnsNumber={4} />
           )}
         </TableBody>
       </Table>
