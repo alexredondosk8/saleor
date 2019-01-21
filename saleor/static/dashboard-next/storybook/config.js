@@ -52,6 +52,9 @@ function loadStories() {
   require("./stories/customers/CustomerDetailsPage");
   require("./stories/customers/CustomerListPage");
 
+  // Discounts
+  require("./stories/discounts/SaleListPage");
+
   // Homepage
   require("./stories/home/HomePage");
 
@@ -94,10 +97,6 @@ function loadStories() {
   require("./stories/orders/OrderPaymentVoidDialog");
   require("./stories/orders/OrderProductAddDialog");
   require("./stories/orders/OrderShippingMethodEditDialog");
-
-  // Vouchers
-  require("./stories/vouchers/VoucherDetailsPage");
-  require("./stories/vouchers/VoucherListPage");
 
   // Product types
   require("./stories/productTypes/ProductTypeAttributeEditDialog");
