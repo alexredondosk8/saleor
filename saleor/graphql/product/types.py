@@ -298,7 +298,7 @@ class Product(CountableDjangoObjectType):
 
     @gql_optimizer.resolver_hints(
         prefetch_related='variants',
-        only=['available_on', 'charge_taxes', 'price', 'tax_rate'])
+        only=['publication_date', 'charge_taxes', 'price', 'tax_rate'])
     def resolve_availability(self, info):
         context = info.context
         availability = get_availability(
